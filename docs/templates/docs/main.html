@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block title %}
+upload now
+{% endblock %}
+
+{% block content %}
+
+<form action="upload/" method='post' class="dropzone dz" id="my-great-dropzone">
+    {% csrf_token %}
+
+</form>
+
+<script>
+  Dropzone.options.myGreatDropzone = { // camelized version of the `id`
+    autoProcessQueue: true,
+    // paramName: "file", // The name that will be used to transfer the file
+    maxFilesize: 2, // MB
+    thumbnailHeight: 30,
+    thumbnailWidth: 30,
+    autoProcessQueue : true,
+    accept: function(file, done) {
+      if (file.name == "justinbieber.jpg") {
+        done("Naha, you don't.");
+      }
+      else { done(); }
+    }
+  };
+</script>
+
+{% endblock %}
